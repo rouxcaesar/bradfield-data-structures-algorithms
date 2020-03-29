@@ -1,0 +1,25 @@
+Execution time for quicksort program
+
+---------------------------
+
+100,000 random nums
+
+real	0m0.230s
+user	0m0.213s
+sys	  0m0.115s
+
+---------------------------
+
+100,000 equal nums
+real	0m3.218s
+user	0m3.160s
+sys	  0m0.131s
+
+Performance for this test case was much worse than the other two cases (about 15 times worse). This is likely because the quicksort implementation doesn't have an optimization for when it compares two values which are equal.
+
+---------------------------
+
+100,000 sorted nums
+real	0m0.215s
+user	0m0.203s
+sys	  0m0.117s
