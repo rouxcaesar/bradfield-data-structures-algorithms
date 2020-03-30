@@ -1,0 +1,8 @@
+goos: darwin
+goarch: amd64
+pkg: bradfield/ds-alg/quick-sort/qs
+BenchmarkQuicksortRandom100000-4   	     200	   6904655 ns/op
+BenchmarkQuicksortEqual100000-4    	       1	2235853721 ns/op
+BenchmarkQuicksortSorted100000-4   	     300	   5207155 ns/op
+PASS
+ok  	bradfield/ds-alg/quick-sort/qs	6.439s
