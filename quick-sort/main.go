@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bradfield/ds-alg/quick-sort/qs"
+	"bradfield/ds/quick-sort/qs"
 	"fmt"
 )
 

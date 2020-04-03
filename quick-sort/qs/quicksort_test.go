@@ -1,7 +1,7 @@
 package qs_test
 
 import (
-	"bradfield/ds-alg/quick-sort/qs"
+	"bradfield/ds/quick-sort/qs"
 	"testing"
 )
 
