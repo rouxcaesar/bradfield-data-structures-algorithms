@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	//slice := qs.GenerateSlice(10, "random")
-	slice := []int{3, 19, 1, 14, 8, 7}
+	//slice := []int{3, 19, 1, 14, 8, 7}
+	slice := hs.GenerateSlice(10, "sorted")
 	fmt.Printf("---------Unsorted-----------\n")
 	fmt.Println(slice)
 	fmt.Println()

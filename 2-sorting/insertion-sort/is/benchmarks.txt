@@ -1,0 +1,8 @@
+goos: darwin
+goarch: amd64
+pkg: bradfield/ds/2-sorting/insertion-sort/is
+BenchmarkInsertionSortRandom100000-12    	      82	  12642569 ns/op
+BenchmarkInsertionSortEqual100000-12     	   15232	     78209 ns/op
+BenchmarkInsertionSortSorted100000-12    	   15423	     78973 ns/op
+PASS
+ok  	bradfield/ds/2-sorting/insertion-sort/is	25.376s
