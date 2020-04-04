@@ -3,7 +3,7 @@ package hs
 func HeapSort(a []int) []int {
 	// Restructure all of the elements in
 	// the slice argument into  a heap data structure.
-	a = buildMaxHeap(a, len(a))
+	buildMaxHeap(&a, len(a))
 
 	// Loop over collection to sort elements.
 	for i := 0; i < len(a)-1; i++ {
@@ -15,18 +15,18 @@ func HeapSort(a []int) []int {
 		// the sorted elements positioned at the
 		// end of the slice.
 		//a = buildMaxHeap(a, len(a)-1-i)
-		a = rebuildHeap(a, len(a)-1-i)
+		rebuildHeap(&a, len(a)-1-i)
 	}
 
 	return a
 }
 
-func rebuildHeap(a []int, num int) []int {
+func rebuildHeap(a *[]int, num int) {
 	j := 0
 
 	for i := 0; i < num; i++ {
-		if ((2*i)+1) < num && a[j] < a[(2*i)+1] {
-			a[i], a[(2*i)+1] = a[(2*i)+1], a[i]
+		if ((2*i)+1) < num && (*a)[j] < (*a)[(2*i)+1] {
+			(*a)[i], (*a)[(2*i)+1] = (*a)[(2*i)+1], (*a)[i]
 			j++
 			i++
 			continue
@@ -35,15 +35,13 @@ func rebuildHeap(a []int, num int) []int {
 		// The second child node is found at index (2*i + 2).
 		// If the parent node at index i is less than the child node,
 		// swap the node values.
-		if ((2*i)+2) < num && a[j] < a[(2*i)+2] {
-			a[j], a[(2*i)+2] = a[(2*i)+2], a[j]
+		if ((2*i)+2) < num && (*a)[j] < (*a)[(2*i)+2] {
+			(*a)[j], (*a)[(2*i)+2] = (*a)[(2*i)+2], (*a)[j]
 			j++
 			i++
 			continue
 		}
 	}
-
-	return a
 }
 
 // buildMaxHeap takes a slice and reorganizes a subset of the slice
@@ -53,7 +51,7 @@ func rebuildHeap(a []int, num int) []int {
 // Any elements at indexes greater than the num argument are
 // the already sorted elements that should not be part of
 // the heap data structure.
-func buildMaxHeap(a []int, num int) []int {
+func buildMaxHeap(a *[]int, num int) {
 	// Loop over collection to swap elements until no swaps occur.
 	for {
 		// noSwaps keeps track of whether any node values have been swapped.
@@ -67,16 +65,16 @@ func buildMaxHeap(a []int, num int) []int {
 			// The first child node is found at index (2*i + 1).
 			// If the parent node at index i is less than the child node,
 			// swap the node values.
-			if ((2*i)+1) < num && a[i] < a[(2*i)+1] {
-				a[i], a[(2*i)+1] = a[(2*i)+1], a[i]
+			if ((2*i)+1) < num && (*a)[i] < (*a)[(2*i)+1] {
+				(*a)[i], (*a)[(2*i)+1] = (*a)[(2*i)+1], (*a)[i]
 				noSwaps = false
 			}
 
 			// The second child node is found at index (2*i + 2).
 			// If the parent node at index i is less than the child node,
 			// swap the node values.
-			if ((2*i)+2) < num && a[i] < a[(2*i)+2] {
-				a[i], a[(2*i)+2] = a[(2*i)+2], a[i]
+			if ((2*i)+2) < num && (*a)[i] < (*a)[(2*i)+2] {
+				(*a)[i], (*a)[(2*i)+2] = (*a)[(2*i)+2], (*a)[i]
 				noSwaps = false
 			}
 		}
@@ -86,6 +84,4 @@ func buildMaxHeap(a []int, num int) []int {
 			break
 		}
 	}
-
-	return a
 }

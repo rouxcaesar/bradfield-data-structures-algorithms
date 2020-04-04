@@ -1,0 +1,8 @@
+goos: darwin
+goarch: amd64
+pkg: bradfield/ds/heap-and-insertion-sorting/heap-sort/hs
+BenchmarkHeapSortRandom100000-12    	       1	7294100743 ns/op
+BenchmarkHeapSortEqual100000-12     	       1	7374603601 ns/op
+BenchmarkHeapSortSorted100000-12    	       1	7172996857 ns/op
+PASS
+ok  	bradfield/ds/heap-and-insertion-sorting/heap-sort/hs	21.870s
