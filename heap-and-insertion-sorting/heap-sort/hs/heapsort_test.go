@@ -1,7 +1,7 @@
 package hs_test
 
 import (
-	"bradfield/ds/2-sorting/heap-sort/hs"
+	"bradfield/ds/heap-and-insertion-sorting/heap-sort/hs"
 	"testing"
 )
 

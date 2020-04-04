@@ -14,7 +14,33 @@ func HeapSort(a []int) []int {
 		// We rebuild a heap with all elements excluding
 		// the sorted elements positioned at the
 		// end of the slice.
-		a = buildMaxHeap(a, len(a)-1-i)
+		//a = buildMaxHeap(a, len(a)-1-i)
+		a = rebuildHeap(a, len(a)-1-i)
+	}
+
+	return a
+}
+
+func rebuildHeap(a []int, num int) []int {
+	j := 0
+
+	for i := 0; i < num; i++ {
+		if ((2*i)+1) < num && a[j] < a[(2*i)+1] {
+			a[i], a[(2*i)+1] = a[(2*i)+1], a[i]
+			j++
+			i++
+			continue
+		}
+
+		// The second child node is found at index (2*i + 2).
+		// If the parent node at index i is less than the child node,
+		// swap the node values.
+		if ((2*i)+2) < num && a[j] < a[(2*i)+2] {
+			a[j], a[(2*i)+2] = a[(2*i)+2], a[j]
+			j++
+			i++
+			continue
+		}
 	}
 
 	return a
