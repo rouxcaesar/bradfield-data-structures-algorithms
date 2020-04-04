@@ -11,35 +11,46 @@ func HeapSort(a []int) []int {
 		// last element in the heap.
 		a[0], a[len(a)-1-i] = a[len(a)-1-i], a[0]
 
-		// We rebuild a heap with all elements excluding
+		// We fix the heap with the elements excluding
 		// the sorted elements positioned at the
 		// end of the slice.
-		//a = buildMaxHeap(a, len(a)-1-i)
-		rebuildHeap(&a, len(a)-1-i)
+		fixHeap(&a, len(a)-1-i)
 	}
 
 	return a
 }
 
-func rebuildHeap(a *[]int, num int) {
-	j := 0
-
+// fixHeap takes a slice and the number of elements in
+// the slice to consider, then swaps the root node with the
+// largest of its two child nodes until the heap is fixed
+// such that it represents a max heap structure.
+func fixHeap(a *[]int, num int) {
 	for i := 0; i < num; i++ {
-		if ((2*i)+1) < num && (*a)[j] < (*a)[(2*i)+1] {
-			(*a)[i], (*a)[(2*i)+1] = (*a)[(2*i)+1], (*a)[i]
-			j++
-			i++
-			continue
+		var left, right int
+		largest := (*a)[i]
+
+		if ((2 * i) + 1) < num {
+			left = (*a)[(2*i)+1]
+			if largest < left {
+				(*a)[i], (*a)[(2*i)+1] = (*a)[(2*i)+1], (*a)[i]
+				largest = left
+			}
 		}
 
-		// The second child node is found at index (2*i + 2).
-		// If the parent node at index i is less than the child node,
-		// swap the node values.
-		if ((2*i)+2) < num && (*a)[j] < (*a)[(2*i)+2] {
-			(*a)[j], (*a)[(2*i)+2] = (*a)[(2*i)+2], (*a)[j]
-			j++
-			i++
-			continue
+		if ((2 * i) + 2) < num {
+			right = (*a)[(2*i)+2]
+			if largest < right {
+				(*a)[i], (*a)[(2*i)+2] = (*a)[(2*i)+2], (*a)[i]
+				largest = right
+			}
+		}
+
+		if largest == left {
+			i = (2 * i)
+		} else if largest == right {
+			i = (2 * i) + 1
+		} else if largest == (*a)[i] {
+			return
 		}
 	}
 }
