@@ -1,0 +1,7 @@
+goos: darwin
+goarch: amd64
+pkg: bradfield/ds-alg/rb-trees-1/binary-search-tree/bst
+BenchmarkBSTRandom100000-4   	      30	  40358077 ns/op
+BenchmarkBSTSorted100000-4   	       1	44853157483 ns/op
+PASS
+ok  	bradfield/ds-alg/rb-trees-1/binary-search-tree/bst	46.114s
