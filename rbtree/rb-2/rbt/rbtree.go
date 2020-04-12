@@ -9,7 +9,10 @@ package rbt
 //
 // Good luck!
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 const (
 	red   = "RED"
@@ -60,6 +63,10 @@ func find(node *treeNode, value int) bool {
 }
 
 func insert(node *treeNode, value int) *treeNode {
+	fmt.Println("--------------------------------")
+	fmt.Println("Inside insert func")
+	fmt.Printf("value: %v\n", value)
+
 	if node == nil {
 		return newTreeNode(value, red, nil, nil)
 	}
@@ -69,56 +76,117 @@ func insert(node *treeNode, value int) *treeNode {
 		node.R = insert(node.R, value)
 	}
 
+	time.Sleep(10 * time.Second)
 	// balance tree here
-	// balance(node)
+	balance(node)
 
+	fmt.Println("--------------------------------")
 	return node
 }
 
 func balance(node *treeNode) {
-	if node.color == red {
-		return
-	}
 
+	fmt.Println("--------------------------------")
+	fmt.Println("Inside balance func")
+	fmt.Printf("node.value: %v\n", node.value)
+	if node.L != nil {
+		fmt.Printf("node.L.value: %v\n", node.L.value)
+	}
+	if node.R != nil {
+		fmt.Printf("node.R.value: %v\n", node.R.value)
+	}
+	//	node.render(0)
 	//fmt.Println("------------------------------")
 	//fmt.Println("Node before balancing")
 	//node.render(2)
 	//fmt.Println()
 
-	if node.L.color == red {
-		if node.L.L.color == red {
-			temp := node
-			left := node.L
-			childOfLeft := node.L.L
+	if node.L != nil && node.L.color == red {
+		if node.L.L != nil && node.L.L.color == red {
+			fmt.Printf("node.L.L detected for swap: %v\n", node.L.L.value)
+			//temp := node
+			//left := node.L
+			//childOfLeft := node.L.L
 
-			// Swap nodes.
-			node = left
-			node.L = childOfLeft
-			node.R = temp
+			//// Swap nodes.
+			//node = left
+			//node.L = childOfLeft
+			//node.R = temp
 
-			//fmt.Println("Node after balancing")
-			//node.render(2)
-			//fmt.Println()
-		} else if node.L.R.color == red {
-			temp := node
-			left := node.L
-			childOfLeft := node.L.R
-
-			// Swap nodes.
-			node = childOfLeft
-			node.L = left
-			node.R = temp
+			//// Recolor nodes.
+			//node.color = red
+			//node.L.color = black
+			//node.R.color = black
 
 			//fmt.Println("Node after balancing")
 			//node.render(2)
 			//fmt.Println()
+			return
+		} else if node.L.R != nil && node.L.R.color == red {
+			fmt.Printf("node.L.R detected for swap: %v\n", node.L.R.value)
+			//temp := node
+			//left := node.L
+			//childOfLeft := node.L.R
+
+			//// Swap nodes.
+			//node = childOfLeft
+			//node.L = left
+			//node.R = temp
+
+			//// Recolor nodes.
+			//node.color = red
+			//node.L.color = black
+			//node.R.color = black
+
+			//fmt.Println("Node after balancing")
+			//node.render(2)
+			//fmt.Println()
+			return
+		} else if node.R != nil && node.R.color == red {
+			if node.R.L != nil && node.R.L.color == red {
+				fmt.Printf("node.R.L detected for swap: %v\n", node.R.L)
+				//temp := node
+				//right := node.R
+				//childOfRight := node.R.L
+
+				//// Swap nodes.
+				//node = childOfRight
+				//node.L = temp
+				//node.R = right
+
+				//// Recolor nodes.
+				//node.color = red
+				//node.L.color = black
+				//node.R.color = black
+
+				//fmt.Println("Node after balancing")
+				//node.render(2)
+				//fmt.Println()
+				return
+			} else if node.R.R != nil && node.R.R.color == red {
+				fmt.Printf("node.R.R detected for swap: %v\n", node.R.R)
+				//temp := node
+				//right := node.R
+				//childOfRight := node.R.R
+
+				//// Swap nodes.
+				//node = right
+				//node.L = temp
+				//node.R = childOfRight
+
+				//// Recolor nodes.
+				//node.color = red
+				//node.L.color = black
+				//node.R.color = black
+
+				//fmt.Println("Node after balancing")
+				//node.render(2)
+				//fmt.Println()
+				return
+			}
 		}
-		// else if node.L.R.color == red {
-
-		//}
 	}
 
-	fmt.Println("------------------------------")
-
+	fmt.Println("--------------------------------")
 	return
 }

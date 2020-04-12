@@ -94,6 +94,7 @@ func TestInsert(t *testing.T) {
 		//{"randomized 2", randomized(N, 10*N)},
 	} {
 		var root *treeNode
+		fmt.Printf("values: %v\n", testCase.values)
 		for _, value := range testCase.values {
 			root = insert(root, value)
 		}
@@ -105,14 +106,12 @@ func TestInsert(t *testing.T) {
 
 		// TODO: Uncomment these once you believe you've implemented a
 		// working red-black tree.
-		/*
-			if !validRbtreeColors(root, black) {
-				t.Fatalf("Found two red nodes in a row for case %q", testCase.name)
-			}
-			if !validRbtreePaths(root) {
-				t.Fatalf("Found two paths with different black node counts for case %q", testCase.name)
-			}
-		*/
+		if !validRbtreeColors(root, black) {
+			t.Fatalf("Found two red nodes in a row for case %q", testCase.name)
+		}
+		if !validRbtreePaths(root) {
+			t.Fatalf("Found two paths with different black node counts for case %q", testCase.name)
+		}
 	}
 }
 
