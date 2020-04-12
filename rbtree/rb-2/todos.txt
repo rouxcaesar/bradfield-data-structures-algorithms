@@ -1,0 +1,7 @@
+1. Complete your red-black tree implementation so that insert performs the appropriate rebalancing operations.
+
+2. How long does your upgraded implementation take to insert 100,000 random values? What about 100,000 values in sorted order?
+
+3. Augment your red-black tree to track the height of the tree. What’s the height after inserting 100,000 values in sorted order?
+
+4. Write a function that converts a sorted array into a red-black tree. Note that it’s possible to perform this conversion in linear time!

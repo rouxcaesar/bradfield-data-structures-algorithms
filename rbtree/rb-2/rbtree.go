@@ -76,5 +76,36 @@ func insert(node *treeNode, value int) *treeNode {
 }
 
 func balance(node *treeNode) {
+	if node.color == red {
+		return
+	}
 
+	fmt.Println("------------------------------")
+	fmt.Println("Node before balancing")
+	node.render()
+	fmt.Println()
+
+	if node.L.color == red {
+		if node.L.L.color == red {
+			temp = node
+			left = node.L
+			right = node.R
+
+			// Swap nodes.
+			node = node.L
+			node.L = left
+			node.R = temp
+
+			fmt.Println("Node after balancing")
+			node.render()
+			fmt.Println()
+		}
+		// else if node.L.R.color == red {
+
+		//}
+	}
+
+	fmt.Println("------------------------------")
+
+	return
 }
