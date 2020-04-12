@@ -69,20 +69,12 @@ func insert(node *treeNode, value int) *treeNode {
 		node.R = insert(node.R, value)
 	}
 
-	// call balance function here
+	// balance tree here
 	// balance(node)
 
 	return node
 }
 
 func balance(node *treeNode) {
-	if node.color == red {
-		return
-	}
 
-	if node.color == black {
-
-		switch {
-		}
-	}
 }
