@@ -82,22 +82,22 @@ func balance(node *treeNode) {
 
 	fmt.Println("------------------------------")
 	fmt.Println("Node before balancing")
-	node.render()
+	node.render(2)
 	fmt.Println()
 
 	if node.L.color == red {
 		if node.L.L.color == red {
-			temp = node
-			left = node.L
-			right = node.R
+			temp := node
+			left := node.L
+			childOfLeft := node.L.L
 
 			// Swap nodes.
-			node = node.L
-			node.L = left
+			node = left
+			node.L = childOfLeft
 			node.R = temp
 
 			fmt.Println("Node after balancing")
-			node.render()
+			node.render(2)
 			fmt.Println()
 		}
 		// else if node.L.R.color == red {
