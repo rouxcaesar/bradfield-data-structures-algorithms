@@ -1,16 +1,16 @@
 package main
 
 import (
-	"bradfield/ds/quick-sort/qs"
+	"bradfield/ds/rbtree/rb-2/rbt"
 	"fmt"
 )
 
 func main() {
 	values := []int{6, 4, 1, 2, 8, 7}
 	fmt.Printf("values: %v\n", values)
-	var root *rbtree.treeNode
+	var root *rbt.treeNode
 	for _, value := range values {
-		root = rbtree.insert(root, value)
+		root = rbt.insert(root, value)
 	}
 	root.render(0)
 }

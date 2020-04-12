@@ -1,4 +1,4 @@
-package rbtree
+package rbt
 
 // Please implement a red-black tree.
 //
@@ -80,10 +80,10 @@ func balance(node *treeNode) {
 		return
 	}
 
-	fmt.Println("------------------------------")
-	fmt.Println("Node before balancing")
-	node.render(2)
-	fmt.Println()
+	//fmt.Println("------------------------------")
+	//fmt.Println("Node before balancing")
+	//node.render(2)
+	//fmt.Println()
 
 	if node.L.color == red {
 		if node.L.L.color == red {
@@ -96,9 +96,22 @@ func balance(node *treeNode) {
 			node.L = childOfLeft
 			node.R = temp
 
-			fmt.Println("Node after balancing")
-			node.render(2)
-			fmt.Println()
+			//fmt.Println("Node after balancing")
+			//node.render(2)
+			//fmt.Println()
+		} else if node.L.R.color == red {
+			temp := node
+			left := node.L
+			childOfLeft := node.L.R
+
+			// Swap nodes.
+			node = childOfLeft
+			node.L = left
+			node.R = temp
+
+			//fmt.Println("Node after balancing")
+			//node.render(2)
+			//fmt.Println()
 		}
 		// else if node.L.R.color == red {
 
